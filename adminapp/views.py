@@ -102,6 +102,7 @@ def adduser(request):
         if password == password_2:
             newuser=CustomUser.objects.create_user(username=username,first_name=first_name,last_name=last_name,email=email,password=password)
             newuser.save()
+            Wallet.objects.create(user=newuser)
         return redirect(users)
 
     return render(request,'admin/adduser.html')
@@ -380,7 +381,7 @@ def orderstatus(request,id):
             addrefund=Wallet.objects.get(user=request.user)
             statusupdate.Total = 0
             refund=PaymentDone.objects.get(user=request.user,Order_id=statusupdate.oredered_id)
-            addrefund.amount+=refund.amount_is
+            addrefund.amount+=int(refund.amount_is)
             addrefund.save()
             refund.amount_is=0
             refund.save()
@@ -389,14 +390,6 @@ def orderstatus(request,id):
                 i.status = "Return accepted"
                 i.is_active = False
                 i.save()
-
-
-        
-
-
-
-
-
 
         elif statusof =="Delivered":
             statusupdate.is_active = True
