@@ -171,6 +171,7 @@ def razorpayed(request):
 
         incart.delete()
         del request.session["addrese_id"] 
+        
 
         return render(request,"realshop/order.html",{"TheOrder":TheOrder,"orderid":orderid,"NewOrdered":NewOrdered,"TotalAmount":TotalAmount,"reduc":reduc})
         

@@ -563,7 +563,7 @@
                                     <div class="product-info" style="height:230px;">
                                         <br>
                                         <h6 class="product-title">
-                                            <a href="single-product.html">{{ k.name }}</a>
+                                            <a href="{% url 'showproducts' k.id %}">{{ k.name }}</a>
                                         </h6>
                                         <!-- <div class="pro-rating">
                                             <a href="#"><i class="zmdi zmdi-star"></i></a>
@@ -892,18 +892,7 @@
     <!-- Main js file that contents all jQuery plugins activation. -->
     <script src="{% static 'realshop/js/main.js' %}"></script>
 
-    <script>
-        function addToCart(link) {
-            $.ajax({
-                url: link,
-                method: 'get',
-                success: (response) => {
-                    $("#carticon").load(location.href + " #carticon>*","")
-
-                }
-            })
-        }
-    </script>
+    
     <script>
         function addToWish(link) {
             $.ajax({

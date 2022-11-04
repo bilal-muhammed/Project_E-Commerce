@@ -69,10 +69,10 @@ def checkout(request):
 
 def MyOrders(request):
     orderis=0
-    ordersof=ordered.objects.filter(user=request.user)
-    for f in ordersof:
+    ordersoft=ordered.objects.filter(user=request.user).order_by('-id')
+    for f in ordersoft:
         print(f.date_at)
-    return render(request,'realshop/myorders.html',{'ordersof':ordersof,"orderis":orderis})
+    return render(request,'realshop/myorders.html',{'ordersoft':ordersoft,"orderis":orderis})
 
 
 

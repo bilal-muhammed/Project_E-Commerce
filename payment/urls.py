@@ -9,4 +9,5 @@ urlpatterns = [
     path('paypal',views.paypal,name='paypal'),
     path('payment-done/', views.payment_done, name='payment_done'),
     path('payment-cancelled/', views.payment_cancelled, name='payment_cancelled'),
+    path('/payment_success',views.payment_success,name="payment_success")
 ]

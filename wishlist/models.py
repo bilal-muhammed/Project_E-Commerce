@@ -16,5 +16,5 @@ class Wishlist(models.Model):
 
 class Wallet(models.Model):
     user=models.ForeignKey(CustomUser,on_delete=models.CASCADE)
-    amount=models.BigIntegerField(null=True)
+    amount=models.BigIntegerField(default=0)
     date=models.DateTimeField(default=datetime.now)

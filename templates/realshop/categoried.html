@@ -167,7 +167,7 @@
                             <div class="col-md-8 hidden-sm hidden-xs">
                                 <nav id="primary-menu">
                                     <ul class="main-menu text-center">
-                                        <li><a href="">Home</a></li>
+                                        <li><a href="{% url 'shophome' %}">Home</a></li>
                                         <li class="mega-parent"><a href="">Categories</a>
                                             <ul class="dropdwn">
                                                 {% for c in cate_list %}
@@ -212,7 +212,7 @@
                                     <!-- total-cart -->
                                     <div class="total-cart f-left">
                                         <div class="total-cart-in">
-                                            <div class="cart-toggler">
+                                            <div class="cart-toggler" id="carticon">
                                                 <a href="{% url 'mycart' %}">
                                                     <span class="cart-quantity">{{ cartcount }}</span><br>
                                                     <span class="cart-icon">
@@ -345,8 +345,10 @@
                                                                         class="zmdi zmdi-refresh"></i></a>
                                                             </li>
                                                             <li>
-                                                                <a href="#" title="Add to cart"><i
-                                                                        class="zmdi zmdi-shopping-cart-plus"></i></a>
+                                                                <a onclick="addToCart(`{% url 'addtocart' c.id %}`)"
+                                                                style="cursor: pointer;">
+                                                                <i class="zmdi zmdi-shopping-cart-plus"></i>
+                                                            </a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -416,7 +418,7 @@
                                 </div>
                                 <!-- Tab Content end -->
                                 <!-- shop-pagination start -->
-                                <ul class="shop-pagination box-shadow text-center ptblr-10-30">
+                                <!-- <ul class="shop-pagination box-shadow text-center ptblr-10-30">
                                     <li><a href="#"><i class="zmdi zmdi-chevron-left"></i></a></li>
                                     <li><a href="#">01</a></li>
                                     <li><a href="#">02</a></li>
@@ -424,7 +426,7 @@
                                     <li><a href="#">...</a></li>
                                     <li><a href="#">05</a></li>
                                     <li class="active"><a href="#"><i class="zmdi zmdi-chevron-right"></i></a></li>
-                                </ul>
+                                </ul> -->
                                 <!-- shop-pagination end -->
                             </div>
                         </div>
@@ -442,13 +444,13 @@
                                 <div id="cat-treeview" class="product-cat">
                                     <ul>
                                             {% for k in cate %}
-                                        <li class="closed"><a href="">{{ k.Categories }}</a></li>
+                                        <li class="closed"><a href="{% url 'categoried_by' k.id %}">{{ k.Categories }}</a></li>
                                         {% endfor %}
                                     </ul>
                                 </div>
                             </aside>
                             <!-- shop-filter -->
-                            <aside class="widget shop-filter box-shadow mb-30">
+                            <!-- <aside class="widget shop-filter box-shadow mb-30">
                                 <h6 class="widget-title border-left mb-20">Price</h6>
                                 <div class="price_filter">
                                     <div class="price_slider_amount">
@@ -457,7 +459,7 @@
                                     </div>
                                     <div id="slider-range"></div>
                                 </div>
-                            </aside>
+                            </aside> -->
                             <!-- widget-color -->
                             <!-- <aside class="widget widget-color box-shadow mb-30">
                                 <h6 class="widget-title border-left mb-20">color</h6>
@@ -471,7 +473,7 @@
                                 </ul>
                             </aside> -->
                             <!-- operating-system -->
-                            <aside class="widget operating-system box-shadow mb-30">
+                            <!-- <aside class="widget operating-system box-shadow mb-30">
                                 <h6 class="widget-title border-left mb-20">Kitchen Wares</h6>
                                 <form action="action_page.php">
                                     <label><input type="checkbox" name="operating-1" value="phone-1">Dish Washer</label><br>
@@ -483,7 +485,7 @@
                                     <label class="mb-0"><input type="checkbox" name="operating-1"
                                             value="phone-1">Bleckgerry os</label><br>
                                 </form>
-                            </aside>
+                            </aside> -->
                             <!-- widget-product -->
                             <aside class="widget widget-product box-shadow">
                                 <!-- <h6 class="widget-title border-left mb-20">recent products</h6>
@@ -793,6 +795,18 @@
     <script src="{% static 'realshop/js/plugins.js' %}"></script>
     <!-- Main js file that contents all jQuery plugins activation. -->
     <script src="{% static 'realshop/js/main.js' %}"></script>
+    <script>
+        function addToCart(link) {
+            $.ajax({
+                url: link,
+                method: 'get',
+                success: (response) => {
+                    $("#carticon").load(location.href + " #carticon>*","")
+
+                }
+            })
+        }
+    </script>
 
 </body>
 
