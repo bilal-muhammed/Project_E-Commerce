@@ -447,14 +447,12 @@
                                                 <!-- single comments -->
                                                 <div class="media mt-30">
                                                     <div class="media-left">
-                                                        <a href="#"><img class="media-object" src="img/author/1.jpg"
-                                                                alt="#"></a>
+                                                        
                                                     </div>
                                                     <div class="media-body">
                                                         <div class="clearfix">
                                                             <div class="name-commenter pull-left">
-                                                                <h6 class="media-heading"><a href="#">{{ user.username
-                                                                        }}</a></h6>
+                                                                <h6 class="media-heading"><a href="#">{{ user.username }}</a></h6>
                                                                 <p class="mb-10">You can Share Your Experince here</p>
                                                             </div>
                                                             <form action="{% url 'comment' showproduct.id %}"
@@ -492,8 +490,7 @@
                                                 <div class="media-body">
                                                     <div class="clearfix">
                                                         <div class="name-commenter pull-left">
-                                                            <h6 class="media-heading"><a href="#">{{ r.user.username
-                                                                    }}</a></h6>
+                                        <h6 class="media-heading"><a href="#">{{ r.user.username }}</a></h6>
                                                             <p class="mb-10">{{ r.date_at }}</p>
                                                         </div>
 
@@ -575,7 +572,7 @@
                                         <br>
 
                                         {% endif %}
-                                        <ul class="action-button">
+                                        <!-- <ul class="action-button">
                                             <li>
                                                 <a href="#" title="Wishlist"><i class="zmdi zmdi-favorite"></i></a>
                                             </li>
@@ -590,7 +587,7 @@
                                                 <a href="#" title="Add to cart"><i
                                                         class="zmdi zmdi-shopping-cart-plus"></i></a>
                                             </li>
-                                        </ul>
+                                        </ul> -->
                                     </div>
                                 </div>
                             </div>
@@ -614,54 +611,18 @@
                     <h6 class="widget-title border-left mb-20">Categories</h6>
                     <div id="cat-treeview" class="product-cat">
                         <ul>
-                            <li class="closed"><a href="#">Brand One</a>
-                                <ul>
-                                    <li><a href="#">Mobile</a></li>
-                                    <li><a href="#">Tab</a></li>
-                                    <li><a href="#">Watch</a></li>
-                                    <li><a href="#">Head Phone</a></li>
-                                    <li><a href="#">Memory</a></li>
-                                </ul>
+                            {% for b in cate %}
+
+                            <li class="closed"><a href="{% url 'categoried_by' b.id %}">{{ b.Categories }}</a>
+
                             </li>
-                            <li class="open"><a href="#">Brand Two</a>
-                                <ul>
-                                    <li><a href="#">Mobile</a></li>
-                                    <li><a href="#">Tab</a></li>
-                                    <li><a href="#">Watch</a></li>
-                                    <li><a href="#">Head Phone</a></li>
-                                    <li><a href="#">Memory</a></li>
-                                </ul>
-                            </li>
-                            <li class="closed"><a href="#">Accessories</a>
-                                <ul>
-                                    <li><a href="#">Footwear</a></li>
-                                    <li><a href="#">Sunglasses</a></li>
-                                    <li><a href="#">Watches</a></li>
-                                    <li><a href="#">Utilities</a></li>
-                                </ul>
-                            </li>
-                            <li class="closed"><a href="#">Top Brands</a>
-                                <ul>
-                                    <li><a href="#">Mobile</a></li>
-                                    <li><a href="#">Tab</a></li>
-                                    <li><a href="#">Watch</a></li>
-                                    <li><a href="#">Head Phone</a></li>
-                                    <li><a href="#">Memory</a></li>
-                                </ul>
-                            </li>
-                            <li class="closed"><a href="#">Jewelry</a>
-                                <ul>
-                                    <li><a href="#">Footwear</a></li>
-                                    <li><a href="#">Sunglasses</a></li>
-                                    <li><a href="#">Watches</a></li>
-                                    <li><a href="#">Utilities</a></li>
-                                </ul>
-                            </li>
+                            {% endfor %}
+
                         </ul>
                     </div>
                 </aside>
                 <!-- operating-system -->
-                <aside class="widget operating-system box-shadow mb-30">
+                <!-- <aside class="widget operating-system box-shadow mb-30">
                     <h6 class="widget-title border-left mb-20">operating system</h6>
                     <form action="action_page.php">
                         <label><input type="checkbox" name="operating-1" value="phone-1">Windows
@@ -676,12 +637,12 @@
                         <label class="mb-0"><input type="checkbox" name="operating-1" value="phone-1">Bleckgerry
                             os</label><br>
                     </form>
-                </aside>
+                </aside> -->
                 <!-- widget-product -->
-                <aside class="widget widget-product box-shadow">
-                    <h6 class="widget-title border-left mb-20">recent products</h6>
+                <!-- <aside class="widget widget-product box-shadow">
+                    <h6 class="widget-title border-left mb-20">recent products</h6> -->
                     <!-- product-item start -->
-                    <div class="product-item">
+                    <!-- <div class="product-item">
                         <div class="product-img">
                             <a href="single-product.html">
                                 <img src="img/product/4.jpg" alt="" />
@@ -693,10 +654,10 @@
                             </h6>
                             <h3 class="pro-price">$ 869.00</h3>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- product-item end -->
                     <!-- product-item start -->
-                    <div class="product-item">
+                    <!-- <div class="product-item">
                         <div class="product-img">
                             <a href="single-product.html">
                                 <img src="img/product/8.jpg" alt="" />
@@ -708,10 +669,10 @@
                             </h6>
                             <h3 class="pro-price">$ 869.00</h3>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- product-item end -->
                     <!-- product-item start -->
-                    <div class="product-item">
+                    <!-- <div class="product-item">
                         <div class="product-img">
                             <a href="single-product.html">
                                 <img src="img/product/12.jpg" alt="" />
@@ -723,7 +684,7 @@
                             </h6>
                             <h3 class="pro-price">$ 869.00</h3>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- product-item end -->
                 </aside>
             </div>
