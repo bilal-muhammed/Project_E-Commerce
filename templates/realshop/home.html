@@ -264,14 +264,16 @@
                                                                     <a href="#">{{ c.product.name }}</a>
                                                                 </h6>
                                                                 <p>
-             <span>Brand <strong>:</strong></span>{{ c.product.brand }}
+                                                                    <span>Brand <strong>:</strong></span>{{
+                                                                    c.product.brand }}
                                                                 </p>
                                                                 <p>
-                                                                    <span>Price <strong>:</strong></span>{{ c.product.price }}
+                                                                    <span>Price <strong>:</strong></span>{{
+                                                                    c.product.price }}
 
-                                                                
+
                                                                 </p>
-                                                               
+
                                                             </div>
 
                                                         </div>
@@ -281,7 +283,7 @@
                                                     </div>
                                                 </li>
                                                 <li>
-                                                   
+
                                                 </li>
                                                 <li>
                                                     <div class="top-cart-inner view-cart">
@@ -480,7 +482,7 @@
                                 </div>
                             </div>
                         </div>
-                            {% endfor %}
+                        {% endfor %}
                         <!-- product-item end -->
 
                     </div>
@@ -550,12 +552,13 @@
                                     <div class="label">{{ k.Category.offer_of }}%</div>
                                 </div>
                                 {% else %}
-                                <div class="ribbon" >
-                                    <div class="label" style="background-color: transparent;">{{ k.Category.offer_of }}%</div>
+                                <div class="ribbon">
+                                    <div class="label" style="background-color: transparent;">{{ k.Category.offer_of }}%
+                                    </div>
                                 </div>
                                 {% endif %}
                                 <div class="product-item">
-                                    <div class="product-img" >
+                                    <div class="product-img">
                                         <a href="{% url 'showproducts' k.id %}">
                                             <img style="height: 280px;" src="{{ MEDIA_URL }}/{{ k.Mimage }}" alt="" />
                                         </a>
@@ -596,10 +599,8 @@
                                                 <a href="#" title="Compare"><i class="zmdi zmdi-refresh"></i></a>
                                             </li>
                                             <li>
-                                                <a onclick="addToCart(`{% url 'addtocart' k.id %}`)"
-                                                    style="cursor: pointer;">
-                                                    <i class="zmdi zmdi-shopping-cart-plus"></i>
-                                                </a>
+                                                <a onclick="addToCart(`{% url 'addtocart' k.id %}`)"style="cursor: pointer;">
+                                                <i class="zmdi zmdi-shopping-cart-plus"></i></a>
                                             </li>
                                         </ul>
                                     </div>
@@ -607,7 +608,7 @@
 
                             </div>
                             {% endfor %}
-                            
+
 
                         </div>
                     </div>
@@ -892,20 +893,33 @@
     <!-- Main js file that contents all jQuery plugins activation. -->
     <script src="{% static 'realshop/js/main.js' %}"></script>
 
-    
+
     <script>
         function addToWish(link) {
             $.ajax({
                 url: link,
                 method: 'get',
                 success: () => {
-                    
+
                 }
             })
         }
 
     </script>
-  
+
+    <script>
+        function addToCart(link) {
+            $.ajax({
+                url: link,
+                method: 'get',
+                success: (response) => {
+                    $("#carticon").load(location.href + " #carticon>*", "")
+
+                }
+            })
+        }
+    </script>
+
 
 </body>
 
